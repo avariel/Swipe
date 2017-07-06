@@ -417,9 +417,12 @@ function Swipe(container, options) {
       }
 
       // kill touchmove and touchend event listeners until touchstart called again
-      element.removeEventListener('touchmove', events, false)
-      element.removeEventListener('touchend', events, false)
+      element.removeEventListener('touchmove', events, false);
+      element.removeEventListener('touchend', events, false);
 
+      if (options.continuous) {
+        delay = options.auto || 0;  // set the delay option back
+      }
     },
     transitionEnd: function(event) {
 
